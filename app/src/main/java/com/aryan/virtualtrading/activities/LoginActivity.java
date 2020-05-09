@@ -1,22 +1,39 @@
-package com.aryan.virtualtrading;
+package com.aryan.virtualtrading.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import com.aryan.virtualtrading.R;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
+import java.util.Arrays;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText etPhone, etPassword;
     Button btnLogin;
-    TextView tvLoginWithFb;
 
-    SharedPreferences sharedPreferences;
+    //with fb
+    private static final String EMAIL = "email";
+    private static final String AUTH_TYPE = "rerequest";
+
+    private CallbackManager mCallbackManager;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,48 +43,65 @@ public class LoginActivity extends AppCompatActivity {
         etPhone = findViewById(R.id.etPhone);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
-        tvLoginWithFb = findViewById(R.id.loginWithFb);
+        LoginButton mLoginButton = findViewById(R.id.login_button);
 
-        SharedPreferences savedData = getSharedPreferences("User", Context.MODE_PRIVATE);
-        if(!savedData.getString("phone", "").isEmpty()){
-            etPhone.setText(savedData.getString("email", ""));
-            etPassword.setText(savedData.getString("password", ""));
-        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if((validInput(etPhone.getText().toString(), etPassword.getText().toString()))){
-                    deleteSavedUser();
-                    saveUser();
-//                    login();
+                    login();
                 }
+            }
+        });
+
+        mCallbackManager = CallbackManager.Factory.create();
+
+
+        // Set the initial permissions to request from the user while logging in
+        mLoginButton.setPermissions(Arrays.asList(EMAIL));
+
+        mLoginButton.setAuthType(AUTH_TYPE);
+
+        // Register a callback to respond to the user
+        mLoginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                setResult(RESULT_OK);
+                finish();
+            }
+
+            @Override
+            public void onCancel() {
+                setResult(RESULT_CANCELED);
+                finish();
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+                Toast.makeText(LoginActivity.this, "Error logging with facebook!", Toast.LENGTH_SHORT).show();
+                return;
             }
         });
     }
 
-    public void saveUser(){
-        sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putString("phone", etPhone.getText().toString());
-        editor.putString("password", etPassword.getText().toString());
-        editor.apply();
+    public void login(){
+        if(etPhone.getText().toString().equals("9880199303") && etPassword.getText().toString().equals("aryan")){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
-    public void deleteSavedUser(){
-        sharedPreferences = getSharedPreferences("User", 0);
-        sharedPreferences.edit().clear().commit();
-    }
 
     public Boolean validInput(String phone, String password){
         if(password.trim().equals("")){
-            etPassword.setError("Empty password field");
+            etPassword.setError("Please enter password!");
             return false;
         }
         else if(phone.trim().equals(""))
         {
-            etPhone.setError("Empty phone field");
+            etPhone.setError("Please enter Email or Phone number!");
             return false;
         }
         return true;
