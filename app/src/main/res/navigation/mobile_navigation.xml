@@ -7,37 +7,26 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.aryan.virtualtrading.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:name="com.aryan.virtualtrading.fragments.HomeFragment"
+        android:label="Market"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.aryan.virtualtrading.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_portfolio"
+        android:name="com.aryan.virtualtrading.fragments.PortfolioFragment"
+        android:label="Portfolio"
+        tools:layout="@layout/fragment_portfolio" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.aryan.virtualtrading.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_market"
+        android:name="com.aryan.virtualtrading.fragments.MarketFragment"
+        android:label="Market"
+        tools:layout="@layout/fragment_market" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.aryan.virtualtrading.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:id="@+id/nav_leaderboard"
+        android:name="com.aryan.virtualtrading.fragments.LeaderboardFragment"
+        android:label="Leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
 
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="com.aryan.virtualtrading.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
-
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="com.aryan.virtualtrading.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
 </navigation>

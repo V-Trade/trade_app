@@ -1,7 +1,12 @@
-package com.aryan.virtualtrading;
+package com.aryan.virtualtrading.activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import com.aryan.virtualtrading.GetUserCallback;
+import com.aryan.virtualtrading.R;
+import com.aryan.virtualtrading.UserRequest;
+import com.aryan.virtualtrading.models.UserModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -21,9 +26,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GetUserCallback.IGetUserResponse{
 
     private AppBarConfiguration mAppBarConfiguration;
+    public static UserModel currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        UserRequest.makeUserRequest(new GetUserCallback(MainActivity.this).getCallback());
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
@@ -65,5 +77,12 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+
+
+    @Override
+    public void onCompleted(UserModel user) {
+        currentUser = user;
     }
 }

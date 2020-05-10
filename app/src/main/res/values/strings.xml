@@ -1,5 +1,22 @@
 <resources>
+
     <string name="app_name">VirtualTrading</string>
+
+    <string name="facebook_app_id">1342165755978798</string>
+    <string name="fb_login_protocol_scheme">fb1342165755978798</string>
+
+    <string name="logout">Logout</string>
+    <string name="enter_text">Compose a post</string>
+    <string name="profile">Profile</string>
+    <string name="permissions">Permissions</string>
+    <string name="email_permission">Email Permission</string>
+    <string name="user_posts_permission">User Posts Permission</string>
+    <string name="make_post_permission">Make Post Permission</string>
+    <string name="app_permission">Entire App Permission</string>
+    <string name="no_fb_review">Permissions Granted without FB Review</string>
+    <string name="fb_review">Permissions Requiring FB Review</string>
+    <string name="no_email_perm">Email permission not granted</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
