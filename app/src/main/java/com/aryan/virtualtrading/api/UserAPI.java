@@ -18,32 +18,9 @@ import retrofit2.http.Part;
 
 public interface UserAPI {
 
-    @POST("users/register")
-    Call<TokenResponse> register(@Body UserModel users);
-
-//    @POST("users/login")
-//    Call<TokenResponse> login(@Body Users users);
-
-    @FormUrlEncoded
     @POST("users/login")
-    Call<TokenResponse> login(@Field("email") String email, @Field("password") String password);
-
-
-    @Multipart
-    @POST("uploads")
-    Call<ImageResponse> uploadProfile(@Part MultipartBody.Part img);
+    Call<TokenResponse> login(@Body UserModel users);
 
     @GET("users/profile")
     Call<UserModel> getUserProfile(@Header("Authorization")String token);
-
-    @PUT("users/profile")
-    Call<UserModel> updateProfile(@Header("Authorization")String token, @Body UserModel users);
-
-    @FormUrlEncoded
-    @PUT("users/changePassword")
-    Call<Void> changePassword(@Header("Authorization")String token, @Field("password") String password);
-
-    @FormUrlEncoded
-    @POST("users/checkPassword")
-    Call<Void> checkPassword(@Header("Authorization")String token, @Field("password") String password);
 }

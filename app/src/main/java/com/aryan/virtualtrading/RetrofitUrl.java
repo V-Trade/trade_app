@@ -4,10 +4,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitUrl {
-    public static final String BASE_URL = "https://nepse-data-api.herokuapp.com/";
 
-//    public static final String BASE_URL = "http://192.168.137.37:3001/";
-//    public static final String BASE_URL = "http://192.168.1.75:3001/";
+//    public static final String BASE_URL = "https://nepse-data-api.herokuapp.com/";
+
+    public static final String BASE_URL = "http://10.0.2.2:3000/";
 
 
     public static String token = "Bearer ";

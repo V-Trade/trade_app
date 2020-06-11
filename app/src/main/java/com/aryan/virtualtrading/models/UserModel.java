@@ -4,59 +4,32 @@ import android.net.Uri;
 
 public class UserModel {
 
-    private String fullname, username, email, phone, password;
-    private Uri profile;
-    private String permissions;
+    private String fullName, username, admin, password;
+    private long phone;
 
-    public UserModel(String fullname, String username, String email, String phone, String password, Uri profile) {
-        this.fullname = fullname;
+//    private Uri profile;
+//    private String permissions;
+
+
+    public UserModel(String fullName, String username, String admin, String password, long phone) {
+        this.fullName = fullName;
         this.username = username;
-        this.email = email;
+        this.admin = admin;
+        this.password = password;
         this.phone = phone;
-        this.password = password;
-        this.profile = profile;
     }
 
-    public UserModel(String fullname, String username, String email, String password, Uri profile) {
-        this.fullname = fullname;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.profile = profile;
-    }
-
-    public UserModel(String phone, String password) {
+    public UserModel(long phone, String password) {
         this.phone = phone;
         this.password = password;
     }
 
-    public UserModel(String email, String password, Uri profile) {
-        this.email = email;
-        this.password = password;
-        this.profile = profile;
+    public String getFullName() {
+        return fullName;
     }
 
-    public UserModel(Uri picture, String name,
-                     String id, String email, String permissions) {
-        this.profile = picture;
-        this.fullname = name;
-        this.email = email;
-        this.permissions = permissions;
-    }
-    public String getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(String permissions) {
-        this.permissions = permissions;
-    }
-
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getUsername() {
@@ -67,20 +40,12 @@ public class UserModel {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
+    public String getAdmin() {
+        return admin;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setAdmin(String admin) {
+        this.admin = admin;
     }
 
     public String getPassword() {
@@ -91,11 +56,11 @@ public class UserModel {
         this.password = password;
     }
 
-    public Uri getProfile() {
-        return profile;
+    public long getPhone() {
+        return phone;
     }
 
-    public void setProfile(Uri profile) {
-        this.profile = profile;
+    public void setPhone(long phone) {
+        this.phone = phone;
     }
 }

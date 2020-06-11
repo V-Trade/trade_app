@@ -9,7 +9,7 @@ import retrofit2.http.GET;
 
 public interface MarketAPI {
 
-    @GET("data/todaysprice")
+    @GET("companies")
     Call<List<MarketModel>> getMarket();
 
 }

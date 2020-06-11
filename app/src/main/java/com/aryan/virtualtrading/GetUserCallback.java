@@ -41,50 +41,50 @@ public class GetUserCallback {
 
     public GetUserCallback(final IGetUserResponse getUserResponse) {
 
-        mGetUserResponse = getUserResponse;
-        mCallback = new GraphRequest.Callback() {
-            @Override
-            public void onCompleted(GraphResponse response) {
-                UserModel user = null;
-                try {
-                    JSONObject userObj = response.getJSONObject();
-                    if (userObj == null) {
-                        return;
-                    }
-                    user = jsonToUser(userObj);
-
-                } catch (JSONException e) {
-                    // Handle exception ...
-                }
-
-                // Handled by ProfileActivity
-                mGetUserResponse.onCompleted(user);
-            }
-        };
+//        mGetUserResponse = getUserResponse;
+//        mCallback = new GraphRequest.Callback() {
+//            @Override
+//            public void onCompleted(GraphResponse response) {
+//                UserModel user = null;
+//                try {
+//                    JSONObject userObj = response.getJSONObject();
+//                    if (userObj == null) {
+//                        return;
+//                    }
+//                    user = jsonToUser(userObj);
+//
+//                } catch (JSONException e) {
+//                    // Handle exception ...
+//                }
+//
+//                // Handled by ProfileActivity
+//                mGetUserResponse.onCompleted(user);
+//            }
+//        };
     }
 
-    private UserModel jsonToUser(JSONObject user) throws JSONException {
-        Uri picture = Uri.parse(user.getJSONObject("picture").getJSONObject("data").getString
-                ("url"));
-        String name = user.getString("name");
-        String id = user.getString("id");
-        String email = null;
-        if (user.has("email")) {
-            email = user.getString("email");
-        }
-
-        // Build permissions display string
-        StringBuilder builder = new StringBuilder();
-        JSONArray perms = user.getJSONObject("permissions").getJSONArray("data");
-        builder.append("Permissions:\n");
-        for (int i = 0; i < perms.length(); i++) {
-            builder.append(perms.getJSONObject(i).get("permission")).append(": ").append(perms
-                    .getJSONObject(i).get("status")).append("\n");
-        }
-        String permissions = builder.toString();
-
-        return new UserModel(picture, name, id, email, permissions);
-    }
+//    private UserModel jsonToUser(JSONObject user) throws JSONException {
+//        Uri picture = Uri.parse(user.getJSONObject("picture").getJSONObject("data").getString
+//                ("url"));
+//        String name = user.getString("name");
+//        String id = user.getString("id");
+//        String email = null;
+//        if (user.has("email")) {
+//            email = user.getString("email");
+//        }
+//
+//        // Build permissions display string
+//        StringBuilder builder = new StringBuilder();
+//        JSONArray perms = user.getJSONObject("permissions").getJSONArray("data");
+//        builder.append("Permissions:\n");
+//        for (int i = 0; i < perms.length(); i++) {
+//            builder.append(perms.getJSONObject(i).get("permission")).append(": ").append(perms
+//                    .getJSONObject(i).get("status")).append("\n");
+//        }
+//        String permissions = builder.toString();
+//
+//       return new UserModel(picture, name, id, email, permissions);
+//    }
 
     public GraphRequest.Callback getCallback() {
         return mCallback;

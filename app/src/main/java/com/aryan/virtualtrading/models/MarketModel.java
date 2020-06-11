@@ -2,41 +2,80 @@ package com.aryan.virtualtrading.models;
 
 public class MarketModel {
 
-    private String companyName, stockSymbol;
-    private float maxPrice;
+    private String name, symbol;
+    private float sharePrice, eps, peRatio;
+    private double capital,outShares;
 
-    public MarketModel(String companyName, float maxPrice) {
-        this.companyName = companyName;
-        this.maxPrice = maxPrice;
+
+    public MarketModel(String name, String symbol, float sharePrice) {
+        this.name = name;
+        this.symbol = symbol;
+        this.sharePrice = sharePrice;
     }
 
-    public MarketModel(String companyName, String stockSymbol, float maxPrice) {
-        this.companyName = companyName;
-        this.stockSymbol = stockSymbol;
-        this.maxPrice = maxPrice;
+    public MarketModel(String name, String symbol, float sharePrice, float eps, float peRatio, double capital, double outShares) {
+        this.name = name;
+        this.symbol = symbol;
+        this.sharePrice = sharePrice;
+        this.eps = eps;
+        this.peRatio = peRatio;
+        this.capital = capital;
+        this.outShares = outShares;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getName() {
+        return name;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public float getMaxPrice() {
-        return maxPrice;
+    public String getSymbol() {
+        return symbol;
     }
 
-    public void setMaxPrice(float maxPrice) {
-        this.maxPrice = maxPrice;
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
-    public String getStockSymbol() {
-        return stockSymbol;
+    public float getSharePrice() {
+        return sharePrice;
     }
 
-    public void setStockSymbol(String stockSymbol) {
-        this.stockSymbol = stockSymbol;
+    public void setSharePrice(float sharePrice) {
+        this.sharePrice = sharePrice;
+    }
+
+    public float getEps() {
+        return eps;
+    }
+
+    public void setEps(float eps) {
+        this.eps = eps;
+    }
+
+    public float getPeRatio() {
+        return peRatio;
+    }
+
+    public void setPeRatio(float peRatio) {
+        this.peRatio = peRatio;
+    }
+
+    public double getCapital() {
+        return capital;
+    }
+
+    public void setCapital(double capital) {
+        this.capital = capital;
+    }
+
+    public double getOutShares() {
+        return outShares;
+    }
+
+    public void setOutShares(double outShares) {
+        this.outShares = outShares;
     }
 }

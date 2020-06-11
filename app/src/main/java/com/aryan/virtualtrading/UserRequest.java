@@ -31,7 +31,7 @@ public class UserRequest {
 
     public static void makeUserRequest(GraphRequest.Callback callback) {
         Bundle params = new Bundle();
-        params.putString("fields", "picture,name,id,email,permissions");
+        params.putString("fields", "picture,name,id,email");
 
 
         GraphRequest request = new GraphRequest(

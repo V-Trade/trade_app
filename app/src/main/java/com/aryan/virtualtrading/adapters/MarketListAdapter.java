@@ -44,9 +44,9 @@ public class MarketListAdapter extends RecyclerView.Adapter<MarketListAdapter.Ma
     public void onBindViewHolder(@NonNull MatchFixtureViewHolder holder, int position) {
         final MarketModel fixture = marketList.get(position);
 
-        holder.valueamt.setText(fixture.getMaxPrice() + "");
-        holder.nameofcompany.setText(fixture.getCompanyName());
-        holder.markettype.setText(fixture.getStockSymbol());
+        holder.valueamt.setText(fixture.getSharePrice() + "");
+        holder.nameofcompany.setText(fixture.getName());
+        holder.markettype.setText(fixture.getSymbol());
     }
 
 
@@ -64,7 +64,7 @@ public class MarketListAdapter extends RecyclerView.Adapter<MarketListAdapter.Ma
             super(itemView);
             valueamt = itemView.findViewById(R.id.valueamt);
             nameofcompany = itemView.findViewById(R.id.nameofcompany);
-            markettype = itemView.findViewById(R.id.markettype);
+            markettype = itemView.findViewById(R.id.tv_symbol);
         }
     }
 }
